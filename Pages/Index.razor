@@ -1,0 +1,54 @@
+﻿@page "/"
+
+@using HOKTutorial.Data
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<UserContext> DbFactory
+
+<PageTitle>Log In</PageTitle>
+
+<h1>Log In</h1>
+
+<form onsubmit="return false;">
+    <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" @bind="User.Username" required>
+        <br/>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" @bind="User.Password" required>
+        <br/>
+        <button type="submit" @onclick="Login">Log In</button>
+    </div>
+    <label>@StatusMessage</label>
+</form>
+
+@code {    
+    private User? User;
+    private string? StatusMessage = "";
+    protected override Task OnInitializedAsync()
+    {
+        User = new();
+        return base.OnInitializedAsync();
+    }
+    private void Login()
+    {
+        using var context = DbFactory.CreateDbContext();
+
+        Console.WriteLine(context.Users?.Count());
+
+        // this just attaches
+        if (User is not null)
+        {
+            if(context.Database
+            .SqlQuery<string>($"SELECT Username FROM Users WHERE Username = {User.Username} AND Password = {User.Password}").Count() > 0)
+            {
+                StatusMessage = "Logged In as " + User.Username;
+            }
+            else
+            {
+                StatusMessage = "Incorrect username or password";
+            }
+        }
+
+        context.SaveChanges();
+    }
+}
