@@ -141,6 +141,7 @@ Go to the Pages directory then delete FetchData.razor and Counter.razor
 Create a new file called CreateAccount.razor and paste this code
 ```html
 @page "/createaccount"
+@using HOKTutorial.Data
 
 <PageTitle>Create Account</PageTitle>
 
@@ -174,6 +175,7 @@ Go to Index.razor and replace it with this code
 
 ```html
 @page "/"
+@using HOKTutorial.Data
 
 <PageTitle>Log In</PageTitle>
 
