@@ -142,6 +142,8 @@ Create a new file called CreateAccount.razor and paste this code
 ```html
 @page "/createaccount"
 
+@using HOKTutorial.Data
+
 <PageTitle>Create Account</PageTitle>
 
 <h1>Create Account</h1>
@@ -174,6 +176,8 @@ Go to Index.razor and replace it with this code
 
 ```html
 @page "/"
+
+@using HOKTutorial.Data
 
 <PageTitle>Log In</PageTitle>
 
@@ -310,7 +314,13 @@ public class UserContext : DbContext
 
 ```
 
-Go to Program.cs and delete the WeatherForecastService, then add this line
+Go to Program.cs and delete the WeatherForecastService, and add the dependencies
+```cs
+using Microsoft.EntityFrameworkCore;
+using HOKTutorial.Data;
+```
+
+ then add this line
 ```cs
 builder.Services.AddDbContextFactory<UserContext>(opt =>
     opt.UseSqlite($"Data Source={nameof(UserContext.UserDb)}.db"));
