@@ -143,8 +143,6 @@ Create a new file called CreateAccount.razor and paste this code
 @page "/createaccount"
 @using HOKTutorial.Data
 
-@using HOKTutorial.Data
-
 <PageTitle>Create Account</PageTitle>
 
 <h1>Create Account</h1>
@@ -177,8 +175,6 @@ Go to Index.razor and replace it with this code
 
 ```html
 @page "/"
-@using HOKTutorial.Data
-
 @using HOKTutorial.Data
 
 <PageTitle>Log In</PageTitle>
