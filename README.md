@@ -132,7 +132,14 @@ Go to Shared/NavMenu.razor and delete the Counter and Fetch data entries, then a
 </div>
 
 @code {
+    private bool collapseNavMenu = true;
 
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
 }
 
 ```
