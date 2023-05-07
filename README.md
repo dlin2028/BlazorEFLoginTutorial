@@ -415,13 +415,9 @@ Here is the full createaccount page. Creating the Log In page is left as an exer
 </form>
 
 @code {
-    private User? User;
+    private User User = new();
     private string? StatusMessage = "";
-    protected override Task OnInitializedAsync()
-    {
-        User = new();
-        return base.OnInitializedAsync();
-    }
+    
     private void AddUser()
     {
         using var context = DbFactory.CreateDbContext();
