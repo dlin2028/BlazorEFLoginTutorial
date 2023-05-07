@@ -168,7 +168,7 @@ Create a new file called CreateAccount.razor and paste this code
 </form>
 
 @code {
-    private User? User;
+    private User User = new();
     private string? StatusMessage = "";
 
     private void AddUser()
@@ -202,7 +202,7 @@ Go to Index.razor and replace it with this code
 </form>
 
 @code {
-    private User? User;
+    private User User = new();
     private string? StatusMessage = "";
 
     private void Login()
@@ -352,13 +352,8 @@ Then, create the initialization logic for the User object.
 
 ```cs
 @code {
-    private User? User;
+    private User User = new();
     private string? StatusMessage = "";
-    protected override Task OnInitializedAsync()
-    {
-        User = new();
-        return base.OnInitializedAsync();
-    }
 }
 ```
 
