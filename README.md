@@ -435,3 +435,4 @@ Here is the full createaccount page. Creating the Log In page is left as an exer
     }
 }
 ```
+Please complete the login page by adding password and username checking, then print "Logged in" if they successfully enter the credentials.
